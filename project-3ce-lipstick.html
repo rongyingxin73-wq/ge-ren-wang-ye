@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>3CE 口红 · 电商视觉设计 | 荣颖欣</title>
+  <meta name="description" content="3CE 口红全套电商视觉设计：5 张主图 + 1 张详情页长图展示。" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    .project-page {
+      --project-wash: #f1f2ef;
+      background: var(--light);
+    }
+
+    .project-hero {
+      padding: 10rem 5vw 5rem;
+      background: var(--light);
+    }
+
+    .project-hero .project-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent-dim);
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+    }
+
+    .project-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6.5vw, 5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.045em;
+      margin: 0 0 1.25rem;
+      max-width: 800px;
+      text-shadow: 0 0 50px rgba(255, 143, 177, 0.25);
+    }
+
+    .project-hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 640px;
+      margin: 0;
+    }
+
+    .module {
+      padding: 5rem 5vw;
+    }
+
+    .module:nth-child(even) {
+      background: var(--project-wash);
+    }
+
+    .module-header {
+      margin-bottom: 3rem;
+    }
+
+    .module-tag {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent-dim);
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+
+    .module-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 0 0 0.75rem;
+    }
+
+    .module-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0;
+    }
+
+    .main-images-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .main-images-top {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .main-images-bottom {
+      display: flex;
+      justify-content: center;
+    }
+
+    .main-images-bottom .img-wrap {
+      width: 25%;
+      min-width: 240px;
+    }
+
+    .img-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--light-2);
+      box-shadow: var(--shadow);
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .img-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    .detail-card {
+      background: var(--light-2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .detail-preview {
+      position: relative;
+      max-height: 520px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .detail-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.6s ease;
+    }
+
+    .detail-preview:hover img {
+      transform: scale(1.02);
+    }
+
+    .detail-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--text-light);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .detail-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    .detail-footer h4 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.25rem;
+    }
+
+    .detail-footer p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .detail-action {
+      padding: 0.85rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--dark);
+      color: var(--text-light);
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+      white-space: nowrap;
+    }
+
+    .detail-action:hover {
+      background: var(--accent);
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      transition: color 0.25s;
+    }
+
+    .back-link:hover {
+      color: var(--text-dark);
+    }
+
+    .project-footer {
+      padding: 4rem 5vw;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    /* Lightbox override for project page */
+    .project-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.94);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .project-lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .project-lightbox-content {
+      position: relative;
+      max-width: 60vw;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .project-lightbox img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      cursor: zoom-in;
+      transition: transform 0.35s ease;
+      transform-origin: top center;
+    }
+
+    .project-lightbox.zoomed img {
+      transform: scale(1.5);
+      cursor: zoom-out;
+    }
+
+    .project-lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s;
+    }
+
+    .project-lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    @media (max-width: 1024px) {
+      .main-images-top {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-images-bottom .img-wrap {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .project-hero {
+        padding: 8rem 5vw 4rem;
+      }
+
+      .main-images-top {
+        grid-template-columns: 1fr;
+      }
+
+      .main-images-bottom .img-wrap {
+        width: 100%;
+      }
+
+      .detail-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Dynamic pink-black background */
+    .project-page {
+      background: linear-gradient(
+        270deg,
+        #06060a,
+        #160a14,
+        #3d0f2a,
+        #ff5c8a,
+        #2a0a1c,
+        #06060a
+      );
+      background-size: 400% 400%;
+      animation: bgShift 24s ease infinite;
+    }
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .project-hero {
+      background: transparent;
+    }
+    .module:nth-child(even) {
+      background: rgba(26, 26, 26, 0.5);
+      backdrop-filter: blur(6px);
+    }
+    .project-footer {
+      background: rgba(8, 8, 12, 0.7);
+      backdrop-filter: blur(8px);
+    }
+    .project-hero p,
+    .module-header p,
+    .detail-footer p {
+      color: var(--text-light-muted);
+    }
+  </style>
+</head>
+<body class="project-page">
+  <header class="light scrolled">
+    <a href="index.html" class="logo"><strong>荣颖欣</strong><span>AIGC Visual Designer</span></a>
+    <nav class="desktop-nav">
+      <a href="index.html#works">作品</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#other-works">其他</a>
+      <a href="index.html#contact">联系</a>
+    </nav>
+    <a href="index.html#works" class="back-link">← 返回作品</a>
+  </header>
+
+  <main>
+    <section class="project-hero">
+      <div class="container">
+        <span class="project-tag">电商套图</span>
+        <h1>3CE 口红 · 电商视觉设计</h1>
+        <p>
+          5 张产品主图 + 1 张详情页长图，覆盖主视觉、色号展示、质地特写、使用场景与完整详情叙事。
+        </p>
+      </div>
+    </section>
+
+    <section class="module">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 01 / 主图展示</span>
+          <h2>产品主图系列</h2>
+          <p>
+            5 张产品主图，覆盖主视觉、色号全览、质地特写、上唇效果与系列产品总览。
+          </p>
+        </div>
+        <div class="main-images-layout reveal">
+          <div class="main-images-top">
+            <div class="img-wrap" data-img="国内电商套图/3CE口红淘宝电商图/主图1.png">
+              <img src="国内电商套图/3CE口红淘宝电商图/主图1.png" alt="3CE 口红主图 1" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="国内电商套图/3CE口红淘宝电商图/主图2.png">
+              <img src="国内电商套图/3CE口红淘宝电商图/主图2.png" alt="3CE 口红主图 2" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="国内电商套图/3CE口红淘宝电商图/主图3.png">
+              <img src="国内电商套图/3CE口红淘宝电商图/主图3.png" alt="3CE 口红主图 3" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="国内电商套图/3CE口红淘宝电商图/主图4.png">
+              <img src="国内电商套图/3CE口红淘宝电商图/主图4.png" alt="3CE 口红主图 4" loading="lazy" />
+            </div>
+          </div>
+          <div class="main-images-bottom">
+            <div class="img-wrap" data-img="国内电商套图/3CE口红淘宝电商图/主图5.png">
+              <img src="国内电商套图/3CE口红淘宝电商图/主图5.png" alt="3CE 口红主图 5" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 02 / 详情页展示</span>
+          <h2>电商详情页</h2>
+          <p>
+            完整电商详情页长图设计，包含产品卖点、参数规格、场景展示、拆解图等全模块内容。
+            <br />点击查看完整长图。
+          </p>
+        </div>
+        <div class="detail-card reveal" data-img="国内电商套图/3CE口红淘宝电商图/3CE口红详情页长图.png">
+          <div class="detail-preview">
+            <img src="国内电商套图/3CE口红淘宝电商图/3CE口红详情页长图.png" alt="3CE 口红详情页长图" loading="lazy" />
+            <span class="detail-badge">长图</span>
+          </div>
+          <div class="detail-footer">
+            <div>
+              <h4>3CE 口红 · 电商详情页</h4>
+              <p>完整详情页长图 · 点击查看全图</p>
+            </div>
+            <button class="detail-action" type="button">查看完整长图 →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="project-footer">
+    <p>© 2026 荣颖欣 · 3CE 口红电商视觉设计 · 随机占位文案，仅供展示</p>
+  </footer>
+
+  <div class="project-lightbox" id="projectLightbox">
+    <button class="project-lightbox-close" aria-label="关闭">×</button>
+    <div class="project-lightbox-content">
+      <img src="" alt="" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const lightbox = document.getElementById("projectLightbox");
+      const lightboxContent = lightbox.querySelector(".project-lightbox-content");
+      const lightboxImg = lightbox.querySelector("img");
+      const closeBtn = lightbox.querySelector(".project-lightbox-close");
+
+      function open(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function close() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-img]").forEach((el) => {
+        el.addEventListener("click", () => open(el.dataset.img));
+      });
+
+      closeBtn.addEventListener("click", close);
+
+      lightboxImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+        lightbox.classList.toggle("zoomed");
+      });
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox || e.target === lightboxContent || e.target === lightboxImg) close();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") close();
+      });
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+    })();
+  </script>
+</body>
+</html>

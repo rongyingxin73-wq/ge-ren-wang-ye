@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>lululemon 瑜伽服 · 亚马逊电商视觉设计 | 荣颖欣</title>
+  <meta name="description" content="lululemon 瑜伽服亚马逊电商视觉设计：7 张主副图 + 1 张 A+ 详情页长图。" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    .project-page-dark {
+      --page-bg: #0b0f0d;
+      --page-surface: #121815;
+      --page-muted: #9ca3a0;
+      background: var(--page-bg);
+      color: #f5f7f5;
+    }
+
+    .project-page-dark header {
+      color: #f5f7f5;
+    }
+
+    .project-page-dark .logo span {
+      color: var(--accent);
+    }
+
+    .project-hero-dark {
+      padding: 10rem 5vw 5rem;
+      background: var(--page-bg);
+    }
+
+    .project-hero-dark .project-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+    }
+
+    .project-hero-dark h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6.5vw, 5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.045em;
+      margin: 0 0 1.25rem;
+      max-width: 900px;
+      text-shadow: 0 0 50px rgba(255, 143, 177, 0.25);
+    }
+
+    .project-hero-dark p {
+      color: var(--page-muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 640px;
+      margin: 0;
+    }
+
+    .module-dark {
+      padding: 5rem 5vw;
+      background: var(--page-bg);
+    }
+
+    .module-dark:nth-child(even) {
+      background: var(--page-surface);
+    }
+
+    .module-header {
+      margin-bottom: 3rem;
+    }
+
+    .module-tag {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+
+    .module-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 0 0 0.75rem;
+      color: #f5f7f5;
+    }
+
+    .module-header p {
+      color: var(--page-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0;
+    }
+
+    .main-images-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .main-images-row {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .main-images-row.four {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .main-images-row.three {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .main-images-row.three .img-wrap {
+      width: calc((100% - 4.5rem) / 4);
+      min-width: 180px;
+      flex: 0 0 auto;
+    }
+
+    .img-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--page-surface);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .img-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    .detail-card {
+      background: var(--page-surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .detail-preview {
+      position: relative;
+      max-height: 520px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .detail-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.6s ease;
+    }
+
+    .detail-preview:hover img {
+      transform: scale(1.02);
+    }
+
+    .detail-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 143, 177, 0.92);
+      color: var(--dark);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .detail-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    .detail-footer h4 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.25rem;
+      color: #f5f7f5;
+    }
+
+    .detail-footer p {
+      margin: 0;
+      color: var(--page-muted);
+      font-size: 0.9rem;
+    }
+
+    .detail-action {
+      padding: 0.85rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: var(--dark);
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      white-space: nowrap;
+    }
+
+    .detail-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255, 143, 177, 0.3);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--page-muted);
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      transition: color 0.25s;
+    }
+
+    .back-link:hover {
+      color: #f5f7f5;
+    }
+
+    .project-footer-dark {
+      padding: 4rem 5vw;
+      text-align: center;
+      color: var(--page-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--page-bg);
+    }
+
+    .project-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.94);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .project-lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .project-lightbox-content {
+      position: relative;
+      max-width: 60vw;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .project-lightbox img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      cursor: zoom-in;
+      transition: transform 0.35s ease;
+      transform-origin: top center;
+    }
+
+    .project-lightbox.zoomed img {
+      transform: scale(1.5);
+      cursor: zoom-out;
+    }
+
+    .project-lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      color: #f5f7f5;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s;
+    }
+
+    .project-lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    @media (max-width: 1024px) {
+      .main-images-row.four {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-images-row.three {
+        flex-wrap: wrap;
+      }
+
+      .main-images-row.three .img-wrap {
+        width: calc((100% - 1.5rem) / 2);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .project-hero-dark {
+        padding: 8rem 5vw 4rem;
+      }
+
+      .main-images-row.four {
+        grid-template-columns: 1fr;
+      }
+
+      .main-images-row.three {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .main-images-row.three .img-wrap {
+        width: 100%;
+      }
+
+      .detail-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  
+    /* Dynamic pink-black background */
+    .project-page-dark {
+      background: linear-gradient(
+        270deg,
+        #06060a,
+        #160a14,
+        #3d0f2a,
+        #ff5c8a,
+        #2a0a1c,
+        #06060a
+      );
+      background-size: 400% 400%;
+      animation: bgShift 24s ease infinite;
+    }
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .project-hero-dark {
+      background: transparent;
+    }
+    .module-dark {
+      background: transparent;
+    }
+    .module-dark:nth-child(even) {
+      background: rgba(26, 26, 26, 0.5);
+      backdrop-filter: blur(6px);
+    }
+    .project-footer-dark {
+      background: rgba(8, 8, 12, 0.7);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="project-page-dark">
+  <header class="scrolled">
+    <a href="index.html" class="logo"><strong>荣颖欣</strong><span>AIGC Visual Designer</span></a>
+    <nav class="desktop-nav">
+      <a href="index.html#works">作品</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#other-works">其他</a>
+      <a href="index.html#contact">联系</a>
+    </nav>
+    <a href="index.html#works" class="back-link">← 返回作品</a>
+  </header>
+
+  <main>
+    <section class="project-hero-dark">
+      <div class="container">
+        <span class="project-tag">亚马逊电商套图</span>
+        <h1>lululemon 瑜伽服 · 亚马逊电商视觉设计</h1>
+        <p>
+          7 张主副图 + 1 张 A+ 详情页长图，覆盖产品主视觉、卖点拆解、场景展示与亚马逊内容版面。
+        </p>
+      </div>
+    </section>
+
+    <section class="module-dark">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 01 / 产品主图</span>
+          <h2>产品主图系列</h2>
+          <p>
+            7 张瑜伽服主副图，覆盖多角度展示、卖点提炼、使用场景等维度。
+          </p>
+        </div>
+        <div class="main-images-layout reveal">
+          <div class="main-images-row four">
+            <div class="img-wrap" data-img="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/主图.png">
+              <img src="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/主图.png" alt="lululemon 瑜伽服 主图" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图1.png">
+              <img src="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图1.png" alt="lululemon 瑜伽服 副图 1" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图2.png">
+              <img src="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图2.png" alt="lululemon 瑜伽服 副图 2" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图3.png">
+              <img src="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图3.png" alt="lululemon 瑜伽服 副图 3" loading="lazy" />
+            </div>
+          </div>
+          <div class="main-images-row three">
+            <div class="img-wrap" data-img="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图4.png">
+              <img src="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图4.png" alt="lululemon 瑜伽服 副图 4" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图5.png">
+              <img src="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图5.png" alt="lululemon 瑜伽服 副图 5" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图6.png">
+              <img src="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/副图6.png" alt="lululemon 瑜伽服 副图 6" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-dark">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 02 / A+ CONTENT</span>
+          <h2>A+ 详情页（亚马逊内容版面）</h2>
+          <p>
+            完整 A+ 详情页长图设计，包含产品介绍、功能亮点、规格参数等全模块内容——点击查看完整长图。
+          </p>
+        </div>
+        <div class="detail-card reveal" data-img="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/瑜伽服A+长图最新.png">
+          <div class="detail-preview">
+            <img src="亚马逊电商套图/lululemon瑜伽服 亚马逊电商图/瑜伽服A+长图最新.png" alt="lululemon 瑜伽服 A+ 长图" loading="lazy" />
+            <span class="detail-badge">A+ 长图</span>
+          </div>
+          <div class="detail-footer">
+            <div>
+              <h4>lululemon 瑜伽服 · A+ 详情页</h4>
+              <p>完整 A+ 详情页长图 · 点击查看全图</p>
+            </div>
+            <button class="detail-action" type="button">查看完整长图 →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="project-footer-dark">
+    <p>© 2026 荣颖欣 · lululemon 瑜伽服亚马逊电商视觉设计 · 随机占位文案，仅供展示</p>
+  </footer>
+
+  <div class="project-lightbox" id="projectLightbox">
+    <button class="project-lightbox-close" aria-label="关闭">×</button>
+    <div class="project-lightbox-content">
+      <img src="" alt="" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const lightbox = document.getElementById("projectLightbox");
+      const lightboxContent = lightbox.querySelector(".project-lightbox-content");
+      const lightboxImg = lightbox.querySelector("img");
+      const closeBtn = lightbox.querySelector(".project-lightbox-close");
+
+      function open(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function close() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-img]").forEach((el) => {
+        el.addEventListener("click", () => open(el.dataset.img));
+      });
+
+      closeBtn.addEventListener("click", close);
+
+      lightboxImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+        lightbox.classList.toggle("zoomed");
+      });
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox || e.target === lightboxContent || e.target === lightboxImg) close();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") close();
+      });
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+    })();
+  </script>
+</body>
+</html>

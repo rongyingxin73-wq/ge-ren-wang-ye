@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>斑斑 BANBAN 海豹 · 品牌 IP 形象设计 | 荣颖欣</title>
+  <meta name="description" content="斑斑 BANBAN 海豹品牌 IP 形象设计：主形象、表情包、三视图、造型延展、周边与扁平插画海报全套展示。" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    .project-page-dark {
+      --page-bg: #0b0f0d;
+      --page-surface: #121815;
+      --page-muted: #9ca3a0;
+      background: transparent;
+      color: #f5f7f5;
+    }
+
+    /* ===== 背景动态视频层 =====
+       固定全屏、置于所有内容之下（负 z-index）；
+       object-fit: cover 保证完整覆盖展示区域且按比例缩放，不拉伸变形；
+       pointer-events: none 避免拦截上方文字与交互元素的点击。 */
+    .page-bg-video {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      pointer-events: none;
+      background: var(--page-bg);
+    }
+
+    .page-bg-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* 半透明遮罩：压暗视频，确保上方文字与按钮清晰可读 */
+    .page-bg-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: rgba(6, 9, 7, 0.6);
+    }
+
+    /* 移动端屏幕小、文字更密集，遮罩略加深以保证可读性 */
+    @media (max-width: 640px) {
+      .page-bg-overlay {
+        background: rgba(6, 9, 7, 0.68);
+      }
+    }
+
+    .project-page-dark header {
+      color: #f5f7f5;
+    }
+
+    .project-page-dark .logo span {
+      color: var(--accent);
+    }
+
+    .project-hero-dark {
+      padding: 10rem 5vw 5rem;
+      background: transparent;
+    }
+
+    .project-hero-dark .project-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+    }
+
+    .project-hero-dark h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6.5vw, 5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.045em;
+      margin: 0 0 1.25rem;
+      max-width: 900px;
+      text-shadow: 0 0 50px rgba(255, 143, 177, 0.25);
+    }
+
+    .project-hero-dark p {
+      color: var(--page-muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 640px;
+      margin: 0;
+    }
+
+    .module-dark {
+      padding: 5rem 5vw;
+      background: var(--page-bg);
+    }
+
+    .module-dark:nth-child(even) {
+      background: var(--page-surface);
+    }
+
+    .module-header {
+      margin-bottom: 3rem;
+    }
+
+    .module-tag {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+
+    .module-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 0 0 0.75rem;
+      color: #f5f7f5;
+    }
+
+    .module-header p {
+      color: var(--page-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0;
+    }
+
+    .main-images-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .main-images-row {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .main-images-row.four {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .main-images-row.three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .main-images-row.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 扁平插画海报：统一横版比例、完整显示不裁切 */
+    .poster-row {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+    }
+
+    .poster-row .img-wrap {
+      aspect-ratio: 16 / 9;
+      background: rgba(255, 255, 255, 0.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .poster-row .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .main-images-bottom {
+      display: flex;
+      justify-content: center;
+    }
+
+    .main-images-bottom .img-wrap {
+      width: 25%;
+      min-width: 240px;
+    }
+
+    /* Stacked full-width rows for landscape/composite images */
+    .main-images-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .main-images-stack .img-wrap {
+      aspect-ratio: auto;
+      width: 100%;
+    }
+
+    .main-images-stack .img-wrap img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* 夏日乐园物料：限制宽度、居中、保持原比例完整显示 */
+    .materials-stack {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .materials-stack .img-wrap {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .img-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--page-surface);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .img-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    .video-player {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--page-surface);
+    }
+
+    .video-player video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .detail-card {
+      background: var(--page-surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .detail-preview {
+      position: relative;
+      max-height: 520px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .detail-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.6s ease;
+    }
+
+    .detail-preview:hover img {
+      transform: scale(1.02);
+    }
+
+    .detail-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 143, 177, 0.92);
+      color: var(--dark);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .detail-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    .detail-footer h4 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.25rem;
+      color: #f5f7f5;
+    }
+
+    .detail-footer p {
+      margin: 0;
+      color: var(--page-muted);
+      font-size: 0.9rem;
+    }
+
+    .detail-action {
+      padding: 0.85rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: var(--dark);
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      white-space: nowrap;
+    }
+
+    .detail-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255, 143, 177, 0.3);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--page-muted);
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      transition: color 0.25s;
+    }
+
+    .back-link:hover {
+      color: #f5f7f5;
+    }
+
+    .project-footer-dark {
+      padding: 4rem 5vw;
+      text-align: center;
+      color: var(--page-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--page-bg);
+    }
+
+    .project-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.94);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .project-lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .project-lightbox-content {
+      position: relative;
+      max-width: 60vw;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .project-lightbox img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      cursor: zoom-in;
+      transition: transform 0.35s ease;
+      transform-origin: top center;
+    }
+
+    .project-lightbox.zoomed img {
+      transform: scale(1.5);
+      cursor: zoom-out;
+    }
+
+    .project-lightbox-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      color: #f5f7f5;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s;
+      z-index: 201;
+    }
+
+    .project-lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    @media (max-width: 1024px) {
+      .main-images-row.four,
+      .main-images-row.three,
+      .main-images-row.two {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-images-bottom .img-wrap {
+        width: 50%;
+      }
+
+      .materials-stack {
+        max-width: 85%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .project-hero-dark {
+        padding: 8rem 5vw 4rem;
+      }
+
+      .main-images-row.four,
+      .main-images-row.three,
+      .main-images-row.two {
+        grid-template-columns: 1fr;
+      }
+
+      .main-images-bottom .img-wrap {
+        width: 100%;
+      }
+
+      .materials-stack {
+        max-width: 100%;
+      }
+
+      .detail-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Dynamic blue-ocean background */
+    .project-page-dark {
+      background: linear-gradient(
+        270deg,
+        #031018,
+        #0a2032,
+        #103a55,
+        #2a86b8,
+        #0a3050,
+        #031018
+      );
+      background-size: 400% 400%;
+      animation: bgShift 24s ease infinite;
+    }
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .project-hero-dark {
+      background: transparent;
+    }
+    .module-dark {
+      background: transparent;
+    }
+    .module-dark:nth-child(even) {
+      background: rgba(42, 134, 184, 0.1);
+      backdrop-filter: blur(6px);
+    }
+    .project-footer-dark {
+      background: rgba(42, 134, 184, 0.12);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="project-page-dark">
+  <!-- 背景动态视频层：自动播放 / 静音 / 循环，object-fit:cover 完整覆盖不拉伸，不拦截点击 -->
+  <div class="page-bg-video" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="auto"
+           poster="品牌IP/斑斑BANBAN海豹/banban 自我介绍封面.png">
+      <source src="品牌IP/斑斑BANBAN海豹/BANBAN网页背景动态图制作.mp4" type="video/mp4" />
+      您的浏览器不支持视频播放。
+    </video>
+  </div>
+  <!-- 半透明遮罩：压暗视频，保证上方文字与交互元素清晰可读 -->
+  <div class="page-bg-overlay" aria-hidden="true"></div>
+
+  <header class="scrolled">
+    <a href="index.html" class="logo"><strong>荣颖欣</strong><span>AIGC Visual Designer</span></a>
+    <nav class="desktop-nav">
+      <a href="index.html#works">作品</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#other-works">其他</a>
+      <a href="index.html#contact">联系</a>
+    </nav>
+    <a href="index.html#works" class="back-link">← 返回作品</a>
+  </header>
+
+  <main>
+    <section class="project-hero-dark">
+      <div class="container">
+        <span class="project-tag">品牌 IP</span>
+        <h1>斑斑 BANBAN 海豹 · 品牌 IP 形象设计</h1>
+        <p>
+          一只圆滚滚、爱打盹的小海豹。围绕主形象延展了表情包、三视图、不同造型、周边衍生品与扁平插画海报，搭起一整套适合社交媒体与品牌传播的 IP 资产。
+        </p>
+      </div>
+    </section>
+
+    <section class="module-dark">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 01 / 主形象展示</span>
+          <h2>IP 主形象</h2>
+          <p>
+            5 张主形象设定，覆盖基础造型、表情、动作与场景延展，作为整套 IP 视觉的核心。
+          </p>
+        </div>
+        <div class="main-images-layout reveal">
+          <div class="main-images-row four">
+            <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/形象1.png">
+              <img src="品牌IP/斑斑BANBAN海豹/形象1.png" alt="斑斑海豹 形象 1" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/形象2.png">
+              <img src="品牌IP/斑斑BANBAN海豹/形象2.png" alt="斑斑海豹 形象 2" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/形象3.png">
+              <img src="品牌IP/斑斑BANBAN海豹/形象3.png" alt="斑斑海豹 形象 3" loading="lazy" />
+            </div>
+            <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/形象4.png">
+              <img src="品牌IP/斑斑BANBAN海豹/形象4.png" alt="斑斑海豹 形象 4" loading="lazy" />
+            </div>
+          </div>
+          <div class="main-images-bottom">
+            <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/形象5.png">
+              <img src="品牌IP/斑斑BANBAN海豹/形象5.png" alt="斑斑海豹 形象 5" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-dark">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 02 / 表情包</span>
+          <h2>表情包合集</h2>
+          <p>
+            一组可日常使用的斑斑表情包，覆盖开心、撒娇、emo、打盹等高频情绪——点击查看完整长图。
+          </p>
+        </div>
+        <div class="detail-card reveal" data-img="品牌IP/斑斑BANBAN海豹/表情包.png">
+          <div class="detail-preview">
+            <img src="品牌IP/斑斑BANBAN海豹/表情包.png" alt="斑斑海豹 表情包" loading="lazy" />
+            <span class="detail-badge">长图</span>
+          </div>
+          <div class="detail-footer">
+            <div>
+              <h4>斑斑海豹 · 表情包</h4>
+              <p>完整表情包长图 · 点击查看全图</p>
+            </div>
+            <button class="detail-action" type="button">查看完整长图 →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-dark">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 03 / 造型与设定</span>
+          <h2>三视图 &amp; 造型延展</h2>
+          <p>
+            标准三视图确定基础比例与五官造型；不同造型展示斑斑在不同情绪与场景下的延展能力。
+          </p>
+        </div>
+        <div class="main-images-stack reveal">
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/三视图.png">
+            <img src="品牌IP/斑斑BANBAN海豹/三视图.png" alt="斑斑海豹 三视图" loading="lazy" />
+          </div>
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/不同造型.png">
+            <img src="品牌IP/斑斑BANBAN海豹/不同造型.png" alt="斑斑海豹 不同造型" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-dark">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 04 / 周边延展</span>
+          <h2>周边衍生品</h2>
+          <p>
+            围绕主形象设计的实体周边，覆盖毛绒玩具、徽章、贴纸等品类，方便 IP 在不同场景落地。
+          </p>
+        </div>
+        <div class="main-images-stack reveal">
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/周边.webp">
+            <img src="品牌IP/斑斑BANBAN海豹/周边.webp" alt="斑斑海豹 周边 1" loading="lazy" />
+          </div>
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/周边2.png">
+            <img src="品牌IP/斑斑BANBAN海豹/周边2.png" alt="斑斑海豹 周边 2" loading="lazy" />
+          </div>
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/周边3.png">
+            <img src="品牌IP/斑斑BANBAN海豹/周边3.png" alt="斑斑海豹 周边 3" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-dark">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 05 / 扁平插画海报</span>
+          <h2>扁平插画海报</h2>
+          <p>
+            用于社交媒体与品牌传播的扁平插画海报延展，强化斑斑海豹在不同主题下的视觉表达。
+          </p>
+        </div>
+        <div class="main-images-row three poster-row reveal">
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/IP形象扁平插画海报生成.png">
+            <img src="品牌IP/斑斑BANBAN海豹/IP形象扁平插画海报生成.png" alt="斑斑海豹 扁平插画海报 1" loading="lazy" />
+          </div>
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/扁平插画海报2.png">
+            <img src="品牌IP/斑斑BANBAN海豹/扁平插画海报2.png" alt="斑斑海豹 扁平插画海报 2" loading="lazy" />
+          </div>
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/export.png">
+            <img src="品牌IP/斑斑BANBAN海豹/export.png" alt="斑斑海豹 扁平插画海报 3" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-dark">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 06 / 线下物料与活动延展</span>
+          <h2>夏日乐园物料</h2>
+          <p>
+            围绕 Sunnyboo 海豹夏日乐园主题延展的线下物料与活动海报，覆盖工作牌、门头、市集摊位及横竖版活动宣传，强化 IP 在商业场景中的落地能力。
+          </p>
+        </div>
+        <div class="main-images-stack materials-stack reveal">
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/工作牌设计.png">
+            <img src="品牌IP/斑斑BANBAN海豹/工作牌设计.png" alt="斑斑海豹 工作牌设计" loading="lazy" />
+          </div>
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/门头设计.webp">
+            <img src="品牌IP/斑斑BANBAN海豹/门头设计.webp" alt="斑斑海豹 门头设计" loading="lazy" />
+          </div>
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/市集摊位设计.png">
+            <img src="品牌IP/斑斑BANBAN海豹/市集摊位设计.png" alt="斑斑海豹 市集摊位设计" loading="lazy" />
+          </div>
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/横版活动宣传海报.png">
+            <img src="品牌IP/斑斑BANBAN海豹/横版活动宣传海报.png" alt="斑斑海豹 横版活动宣传海报" loading="lazy" />
+          </div>
+          <div class="img-wrap" data-img="品牌IP/斑斑BANBAN海豹/竖版活动宣传海报.png">
+            <img src="品牌IP/斑斑BANBAN海豹/竖版活动宣传海报.png" alt="斑斑海豹 竖版活动宣传海报" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-dark">
+      <div class="container">
+        <div class="module-header reveal">
+          <span class="module-tag">MODULE 07 / 自我介绍视频</span>
+          <h2>BANBAN 自我介绍</h2>
+          <p>
+            一段可爱的自我介绍小动画，让斑斑海豹的品牌性格更生动地传递出来。
+          </p>
+        </div>
+        <div class="video-player reveal">
+          <video controls preload="metadata" playsinline poster="品牌IP/斑斑BANBAN海豹/banban 自我介绍封面.png">
+            <source src="品牌IP/斑斑BANBAN海豹/BANBAN斑斑自我介绍视频.mp4" type="video/mp4" />
+            您的浏览器不支持视频播放。
+          </video>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="project-footer-dark">
+    <p>© 2026 荣颖欣 · 斑斑 BANBAN 海豹品牌 IP 设计 · 随机占位文案，仅供展示</p>
+  </footer>
+
+  <div class="project-lightbox" id="projectLightbox">
+    <button class="project-lightbox-close" aria-label="关闭">×</button>
+    <div class="project-lightbox-content">
+      <img src="" alt="" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const lightbox = document.getElementById("projectLightbox");
+      const lightboxContent = lightbox.querySelector(".project-lightbox-content");
+      const lightboxImg = lightbox.querySelector("img");
+      const closeBtn = lightbox.querySelector(".project-lightbox-close");
+
+      function open(src) {
+        lightboxImg.src = src;
+        lightbox.classList.remove("zoomed");
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function close() {
+        lightbox.classList.remove("active");
+        lightbox.classList.remove("zoomed");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-img]").forEach((el) => {
+        el.addEventListener("click", () => open(el.dataset.img));
+      });
+
+      closeBtn.addEventListener("click", close);
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox || e.target === lightboxContent || e.target === lightboxImg) close();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") close();
+      });
+
+      lightboxImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+        lightbox.classList.toggle("zoomed");
+      });
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+    })();
+  </script>
+
+  <script>
+    /* 背景视频保险：部分浏览器策略会阻止 autoplay，这里静音后显式尝试播放 */
+    (function () {
+      const bgVideo = document.querySelector(".page-bg-video video");
+      if (!bgVideo) return;
+      bgVideo.muted = true;
+      function tryPlay() {
+        const p = bgVideo.play();
+        if (p && typeof p.catch === "function") p.catch(function () {});
+      }
+      tryPlay();
+      document.addEventListener("DOMContentLoaded", tryPlay);
+      window.addEventListener("load", tryPlay);
+    })();
+  </script>
+</body>
+</html>
