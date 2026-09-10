@@ -76,7 +76,7 @@
       title: "《交换的影子》",
       category: "aivideo",
       type: "video",
-      src: "AI视频精选/《交换的影子》/《交换的影子》.mp4",
+      src: "AI视频精选/《交换的影子》/《交换的影子》-hero.mp4",
       poster: "assets/交换的影子-封面.jpg",
       tag: "AI 视频精选",
       feature: true,
@@ -258,7 +258,7 @@
         const playIcon = item.detail
           ? ""
           : `<div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>`;
-        media = `<video src="${item.src}"${poster} muted loop preload="metadata" playsinline></video>${playIcon}`;
+        media = `<video src="${item.src}"${poster} muted loop preload="none" playsinline></video>${playIcon}`;
       } else if (item.type === "placeholder") {
         media = `<div class="placeholder-media"><span>IP</span></div>`;
       } else if (item.type === "gallery") {
