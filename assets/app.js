@@ -382,7 +382,15 @@
       video.src = src;
       video.controls = true;
       video.autoplay = true;
+      video.muted = true;
       video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "true");
+      video.setAttribute("x5-playsinline", "true");
+      video.setAttribute("x5-video-player-type", "h5");
+      video.setAttribute("x5-video-player-fullscreen", "false");
+      video.setAttribute("x5-video-orientation", "portraint");
+      video.setAttribute("preload", "metadata");
+      video.setAttribute("crossorigin", "anonymous");
       lightboxContent.appendChild(video);
     } else if (type === "gallery") {
       const images = Array.isArray(src) ? src : [src];

@@ -1338,10 +1338,18 @@ header.light .menu-toggle span {
 }
 
 .lightbox video {
-  max-width: 65vw;
-  max-height: 72vh;
+  max-width: 55vw;
+  max-height: 62vh;
   border-radius: 0.5rem;
   display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .lightbox video {
+    max-width: 80vw;
+    max-height: 45vh;
+  }
 }
 
 .lightbox-gallery {
