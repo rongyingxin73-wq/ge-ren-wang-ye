@@ -76,7 +76,7 @@
       title: "《交换的影子》",
       category: "aivideo",
       type: "video",
-      src: "AI视频精选/《交换的影子》/《交换的影子》-hero.mp4",
+      src: "AI视频精选/《交换的影子》/《交换的影子》.mp4",
       poster: "assets/交换的影子-封面.jpg",
       tag: "AI 视频精选",
       feature: true,
@@ -382,7 +382,6 @@
       video.src = src;
       video.controls = true;
       video.autoplay = true;
-      video.muted = true;
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "true");
       video.setAttribute("x5-playsinline", "true");
